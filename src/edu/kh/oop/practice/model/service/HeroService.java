@@ -47,7 +47,7 @@ public class HeroService {
 		System.out.println();
 		
 		wizard.attack();
-		warrior.setHp( warrior.getHp() - 150 );
+		warrior.setHp( warrior.getHp() - 150 ); // 17850
 		
 		System.out.println();
 		

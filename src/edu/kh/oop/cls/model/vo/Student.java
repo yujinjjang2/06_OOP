@@ -16,7 +16,7 @@ public class Student { // 클래스 선언부
 	
 	
 	/* 필드 구성 (대괄호는 생략가능)
-	 *   [접근제한자]     [예약어]      자료형     변수명       [=초기값;]
+	 *   [접근제한자]       [예약어]       자료형     변수명       [=초기값;]
 	 * +   public          final      기본자료형
 	 * #   protected       static      (참조형)
 	 * ~   (default)    final static     배열
