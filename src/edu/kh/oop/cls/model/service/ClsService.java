@@ -90,5 +90,77 @@ public class ClsService /*extends Student*/{
 		System.out.println( u1.getUserName() ); // 홍길동
 		System.out.println( u1.getUserAge() ); // 20
 		System.out.println( u1.getUserGender() ); // 남
+		
+		User u2 = new User();
+		
+		System.out.println( u2.getUserId() ); // user01
+		System.out.println( u2.getUserPw() ); // pass01
+		System.out.println( u2.getUserName() ); // 홍길동
+		System.out.println( u2.getUserAge() ); // 20
+		System.out.println( u2.getUserGender() ); // 남
+		
+		
+		// 문제점 : u1이 참조하고 있는 User 객체와
+		//          u2가 참조하고 있는 User 객체의 필드 값이 모두 동일함
+		//          왜? 같은 기본 생성자로 User 객체를 생성했기 때문에
+		
+		System.out.println("----------------------------------");
+		// 해결 방법 1: setter를 이용해서 새로운 값 대입
+		
+		u2.setUserId("asdf12345");
+		u2.setUserPw("1w2e3e");
+		u2.setUserName("김영희");
+		u2.setUserAge(19);
+		u2.setUserGender('여');
+		
+		System.out.println( u2.getUserId() ); // asdf12345
+		System.out.println( u2.getUserPw() ); // 1w2e3e
+		System.out.println( u2.getUserName() ); // 김영희
+		System.out.println( u2.getUserAge() ); // 19
+		System.out.println( u2.getUserGender() ); // 여
+		
+		// 해결방법 2: 매개변수 생성자를 이용해서
+		//            객체가 생성될 때 부터 다른값으로 필드를 초기화
+		
+		User u3 = new User("test3", "password333"); // 매개변수 생성자 // test3/password333
+		           // 생성자 수행 시 전달할 값을 작성(순서 꼭 지켜야됨!) 
+		
+		System.out.println( u3.getUserId() );
+		System.out.println( u3.getUserPw() );
+	}
+	
+	public void ex4() { // 매개변수 생성자 예제
+		
+		User u1 = new User(); // 기본생성자
+		User u2 = new User("user02", "pass02"); // 매개변수 2개 생성자
+		User u3 = new User("user03", "pass03", "김용기", 30, '남');// 매개변수 5개 생성자
+		
+		System.out.printf("u1 : %s / %s / %s / %d / %c\n",
+					u1.getUserId(), u1.getUserPw(), u1.getUserName(),
+					u1.getUserAge(), u1.getUserGender()
+				); // u1 : user01 / pass01 / 홍길동 / 20 / 남
+		
+		System.out.printf("u2 : %s / %s / %s / %d / %c\n",
+				u2.getUserId(), u2.getUserPw(), u2.getUserName(),
+				u2.getUserAge(), u2.getUserGender()
+			); // u2 : user02 / pass02 / null / 0 / 
+		
+		System.out.printf("u3 : %s / %s / %s / %d / %c\n",
+				u3.getUserId(), u3.getUserPw(), u3.getUserName(),
+				u3.getUserAge(), u3.getUserGender()
+			); // u3 : user03 / pass03 / 김용기 / 30 / 남
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }
