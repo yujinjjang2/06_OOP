@@ -39,7 +39,22 @@ public class MemberService {
 			case 1 : System.out.println( signUp() ); break;
 			case 2 : System.out.println( login() ); break;
 			case 3 : System.out.println( selectMember() ); break;
-			case 4 : System.out.println("회원정보수정"); break;
+			case 4 : 
+				
+				int result = updateMember();
+				
+				if(result == -1) {
+					System.out.println("로그인 후 이용해주세요.");
+					
+				} else if(result == 0) {
+					System.out.println("회원 정보 수정 실패 (비밀번호 불일치)");
+					
+				} else { // result == 1
+					System.out.println("회원 정보가 수정되었습니다.");
+					
+				}
+				
+				break;
 			case 0 : System.out.println("프로그램 종료.."); break;
 			default : System.out.println("잘못 입력하셨습니다.. 다시 입력해주세요");
 			
@@ -155,14 +170,9 @@ public class MemberService {
 		// 1) 로그인 여부 확인
 		// 로그인 안했을때 "로그인 후 이용해주세요"
 		if(loginMember == null) {
+			// loginMember가 참조하는 객체가 없을 경우
+			
 			return "로그인 후 이용해주세요";
-		} else {
-			String memberName = loginMember.getMemberName();
-			String memberId = loginMember.getMemberId();
-			int memberAge = loginMember.getMemberAge();
-			return "이름 : " + memberName +" \n" +
-					"아이디 : " + memberId + "\n" +
-					"나이 : " + memberAge + "\n";
 		}
 		
 		
@@ -173,8 +183,52 @@ public class MemberService {
 		// 이름 : 홍길동
 		// 아이디 : user01
 		// 나이 : 25세
+		String str = "이름 : " + loginMember.getMemberName();
+		str += "\n아이디 : " + loginMember.getMemberId();
+		str += "\n나이 : " + loginMember.getMemberAge() + "세";
+		
+		return str;
+		
+	}
+	
+	
+	// 회원 정보 수정 기능
+	public int updateMember() {
+		
+		System.out.println("\n******회원 정보 수정******");
+		
+		// 1) 로그인 여부 판별
+		// 로그인이 되어있지 않으면 -1 반환
+		if(loginMember == null) {
+			return -1;
+		}
 		
 		
+		// 2) 로그인이 되어있을때
+		// 2-1) 수정할 회원 정보 입력 받기 (이름, 나이)
+		System.out.print("수정할 이름 입력 : ");
+		String inputName = sc.next();
+		
+		System.out.print("수정할 나이 입력 : ");
+		int inputAge = sc.nextInt();
+		
+		// 2-2) 비밀번호를 입력받아서 로그인한 회원의 비밀번호와 일치하는지 확인
+		System.out.print("비밀번호 입력 : ");
+		String inputPw = sc.next();
+		
+		if( inputPw.equals(loginMember.getMemberPw()) ) {
+			// -> 비밀번호가 같을 경우
+			//      로그인한 회원의 이름, 나이 정보를 입력받은 값으로 변경 후
+			// 		1 반환
+			
+			loginMember.setMemberName( inputName );
+			loginMember.setMemberAge( inputAge );
+			
+			return 1;
+		} else {
+			// -> 비밀번호가 다를 경우 0 반환
+			return 0;
+		}
 		
 	}
 	
