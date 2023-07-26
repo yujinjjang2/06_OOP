@@ -21,9 +21,7 @@ public class SnackController {
 	
 	public String confirmData() {
 		
-		String str = s.getKind() + "(" + s.getName() + " - " + s.getFlavor() + ") " +
-					 s.getNumOf() + "개 " + s.getPrice() + "원";
-		return str;
+		return s.informaiton();
 	}
 
 }
