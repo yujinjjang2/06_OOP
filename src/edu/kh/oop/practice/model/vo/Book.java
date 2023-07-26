@@ -14,11 +14,11 @@ public class Book {
 		this.price = price;
 		this.discountRate = discountRate;
 		this.author = author;
+		
 	}
 	
 	public String toString() {
-		String str = getTitle() + " / " + getPrice() + " / " +
-	                 getDiscountRate() + " / " + getAuthor();
+		String str = getTitle() + " / " + getPrice() + " / " + getDiscountRate() + " / " + getAuthor();
 		return str;
 	}
 	

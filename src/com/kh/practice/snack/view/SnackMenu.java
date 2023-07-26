@@ -29,16 +29,13 @@ public class SnackMenu {
 		System.out.print("가격 : ");
 		int price = sc.nextInt();
 		
-		String save = scr.saveData(kind, name, flavor, numOf, price);
-		System.out.println(save);
+		System.out.println(scr.saveData(kind, name, flavor, numOf, price));
 		
 		System.out.print("저장한 정보를 확인하시겠습니까?(y/n) : ");
 		String choice = sc.next();
 		
 		if(choice.equals("y")) {
-			String confirm = scr.confirmData();
-			System.out.println(confirm);
+			System.out.println(scr.confirmData());
 		}
 	}
-
 }

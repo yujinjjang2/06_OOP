@@ -4,7 +4,7 @@ import com.kh.practice.snack.model.vo.Snack;
 
 public class SnackController {
 	
-	private Snack s = new Snack();
+	Snack s = new Snack();
 	
 	public SnackController() {}
 	
@@ -21,8 +21,8 @@ public class SnackController {
 	
 	public String confirmData() {
 		
-		String str = s.getKind() + "(" + s.getName() + " - " + s.getFlavor() + ") " + s.getNumOf() + "개 " + s.getPrice() + "원";
-				
+		String str = s.getKind() + "(" + s.getName() + " - " + s.getFlavor() + ") " +
+					 s.getNumOf() + "개 " + s.getPrice() + "원";
 		return str;
 	}
 

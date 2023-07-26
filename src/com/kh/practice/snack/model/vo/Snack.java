@@ -11,10 +11,14 @@ public class Snack {
 	public Snack() {}
 	
 	public Snack(String kind, String name, String flavor, int numOf, int price) {
-		
+		this.kind = kind;
+		this.name = name;
+		this.flavor= flavor;
+		this.numOf = numOf;
+		this.price = price;
 	}
 	
-	public String information() {
+	public String informaiton() {
 		return "";
 	}
 	
@@ -57,5 +61,4 @@ public class Snack {
 	public int getPrice() {
 		return price;
 	}
-
 }
